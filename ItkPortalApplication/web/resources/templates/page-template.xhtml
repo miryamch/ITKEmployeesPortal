@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition>
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <h:outputStylesheet name="css/default.css"/>
+            <h:outputStylesheet name="css/cssLayout.css"/>
+            <title><ui:insert name="title">ITK Engineering employees' portal</ui:insert></title>
+        </h:head>
+        
+        <h:body>
+            <div id="top">
+                <h1> ITK Engineering  </h1>
+                <p> Welcome to the employees' inofficial portal!</p>
+            </div>
+            
+            <div>
+                <div id="left">
+                    <div>
+                        <ui:decorate template="navigation-button.xhtml">
+                            <ui:param name="sectionName" value="News"></ui:param>
+                            <ui:param name="sectionPath" value="/view/newsPage"></ui:param>
+                        </ui:decorate>
+                    </div>
+                    <div>
+                        <ui:decorate template="navigation-button.xhtml">
+                            <ui:param name="sectionName" value="Phone book"></ui:param>
+                            <ui:param name="sectionPath" value="/view/phoneBookPage"></ui:param>
+                        </ui:decorate>
+                    </div>
+                    <div>
+                        <ui:decorate template="navigation-button.xhtml">
+                            <ui:param name="sectionName" value="Cantine Menu"></ui:param>
+                            <ui:param name="sectionPath" value="/view/cantineMenuPage"></ui:param>
+                        </ui:decorate>
+                    </div>
+                    <div>
+                        <ui:decorate template="navigation-button.xhtml">
+                            <ui:param name="sectionName" value="Classified ads"></ui:param>
+                            <ui:param name="sectionPath" value="/view/classifiedAdsPage"></ui:param>
+                        </ui:decorate>
+                    </div>
+                </div>
+                <div id="content" class="left_content">
+                    <ui:insert name="content">Content</ui:insert>
+                </div>
+            </div>
+            
+            <div id="bottom">
+                <ui:insert name="bottom">
+                    <p> 
+                        ITK Engineering AG  Im Speyerer Tal 6  76761 Rülzheim<br/>
+                        Tel.: +49 7272 7703-0   Fax: +49 7272 7703-100<br/>
+                    </p>
+                    
+                    <p>
+                        <h:outputLink value="http://www.itk-engineering.de"> http://www.itk-engineering.de</h:outputLink><br/>
+                    </p>
+                    <p>
+                        <h:outputLink value="mailto:info@itk-engineering.de">
+                            <h:outputText value="info@itk-engineering.de" />
+                        </h:outputLink>
+                    </p>
+                </ui:insert>
+            </div>
+        </h:body>
+    </ui:composition>
+</html>
