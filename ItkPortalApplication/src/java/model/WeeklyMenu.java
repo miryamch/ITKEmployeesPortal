@@ -33,13 +33,17 @@ public class WeeklyMenu implements Serializable{
         String[] weekDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
         for (String weekDay : weekDays) {
             ArrayList<Meal> dayMenu = new ArrayList<>(); 
-            Meal meal1 = new Meal(); // default meal 
-            meal1.setDescription("Basil and garlic");
+            
+            Meal meal1 = new Meal(); 
+            meal1.setName("Pizza");
+            meal1.setDescription("Ham and mushrooms ");
+            meal1.setVegetarian(false);
             dayMenu.add(meal1); 
-            Meal meal2 = new Meal(); 
-            meal2.setName("Pizza");
-            meal2.setDescription("Ham and mushrooms ");
+            
+            Meal meal2 = new Meal(); // default meal 
+            meal2.setDescription("Basil and garlic");
             dayMenu.add(meal2); 
+            
             mMenuList.put(weekDay, dayMenu);
         }
     }

@@ -15,27 +15,22 @@
             <h2> This week's menu</h2>
             <c:forEach items="#{menu.menuList}" var="entry">
                 <h:outputText value="#{entry.key}" />
-                <h:dataTable value="#{entry.value}" var="dayMenu">
-                    <h:column> 
-                        <h:outputText value="#{dayMenu.name}" />
-                    </h:column>
-                    
-                    <h:column> 
-                        <h:outputText value="#{dayMenu.description}" />
-                    </h:column>
-                    
-                    <h:column> 
+                <p:dataTable value="#{entry.value}" var="dayMenu">
+                    <p:column > 
+                        <h:outputText value="#{dayMenu.name} " />
+                        <h:outputText value=" (#{dayMenu.description})" />
+                    </p:column>
+                   
+                    <p:column> 
                         <h:outputText value="#{dayMenu.price}" >
                             <f:convertNumber type="currency" currencySymbol="€"/>
                         </h:outputText> <br/>
-                    </h:column>
+                    </p:column>
                     
-                    <h:column> 
-                        <c:if test="#{dayMenu.vegetarian}">
-                            <h:outputText>Vegetarian</h:outputText>
-                        </c:if>  
-                    </h:column>
-                </h:dataTable>
+                    <p:column> 
+                        <h:outputText rendered = "#{dayMenu.vegetarian}" value="vegetarian"/>
+                    </p:column>
+                </p:dataTable>
             </c:forEach>
             
         </ui:define>
