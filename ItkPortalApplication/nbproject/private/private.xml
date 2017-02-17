@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mchaabouni/Documents/Arbeit/JSF/jsfproject/ItkPortalApplication/web/view/cantineMenu.xhtml</file>
-            <file>file:/C:/Users/mchaabouni/Documents/Arbeit/JSF/jsfproject/ItkPortalApplication/src/java/model/Meal.java</file>
-            <file>file:/C:/Users/mchaabouni/Documents/Arbeit/JSF/jsfproject/ItkPortalApplication/src/java/model/WeeklyMenu.java</file>
-            <file>file:/C:/Users/mchaabouni/Documents/Arbeit/JSF/jsfproject/ItkPortalApplication/web/view/phoneBook.xhtml</file>
-            <file>file:/C:/Users/mchaabouni/Documents/Arbeit/JSF/jsfproject/ItkPortalApplication/web/index.xhtml</file>
+            <file>file:/C:/Users/mchaabouni/Documents/Arbeit/JSF/ItkPortalRepository/ItkPortalApplication/src/java/model/Employee.java</file>
+            <file>file:/C:/Users/mchaabouni/Documents/Arbeit/JSF/ItkPortalRepository/ItkPortalApplication/src/java/model/EmployeeService.java</file>
+            <file>file:/C:/Users/mchaabouni/Documents/Arbeit/JSF/ItkPortalRepository/ItkPortalApplication/src/java/model/Meal.java</file>
+            <file>file:/C:/Users/mchaabouni/Documents/Arbeit/JSF/ItkPortalRepository/ItkPortalApplication/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>

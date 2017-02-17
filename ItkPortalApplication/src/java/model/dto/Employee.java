@@ -3,12 +3,13 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-package model;
+package model.dto;
 
 import java.io.Serializable;
 import java.util.Random;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.persistence.Transient;
 //import javax.persistence.Entity;
 //import javax.persistence.Id;
 //import java.util.Random;
@@ -25,8 +26,11 @@ public class Employee implements Serializable {
     private String mName;
     private String mEmail;
     private String mPhoneNumber ;
+    @Transient
     private final String DEFAULT_NAME = "John Doe";
+    @Transient
     private final String DEFAULT_EMAIL = "john.doe@itk-engineering.com";
+    @Transient
     private final String DEFAULT_PHONE = "5550001";
     
     public Employee() {

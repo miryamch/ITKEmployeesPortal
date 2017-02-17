@@ -3,11 +3,14 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-package model;
+package model.dto;
 
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  *
@@ -16,13 +19,16 @@ import javax.faces.view.ViewScoped;
 @Named(value = "meal")
 @ViewScoped
 public class Meal implements Serializable{
-    
+    @Id @GeneratedValue
     private String name ;
     private String description;
     private Double price;
     private boolean vegetarian ;
+    @Transient
     private final String DEFAULT_NAME = "Pesto Pasta";
+    @Transient
     private final Double DEFAULT_PRICE = 4.5;
+    @Transient
     private final boolean DEFAULT_VEGETARIAN = true;
     
     

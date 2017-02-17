@@ -3,7 +3,7 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-package model;
+package model.dao;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import model.dto.Meal;
 
 /**
  *

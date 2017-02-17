@@ -5,6 +5,7 @@
  */
 package model;
 
+import model.dto.Employee;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
