@@ -35,6 +35,38 @@ public class EmployeeService implements Serializable{
     static final String PASSWORD = "nbuser";
     
     private static final String tableName = "employee";
+    /* Retrive list of employees from database
+    If fail to connect to the database return a default list of employees
+    source : http://www.javaknowledge.info/display-datatable-from-mysql-db-in-primefaces/
+    */
+    public ArrayList<Employee> getEmployeeList(){
+        ArrayList<Employee> employeeList = new ArrayList<>();
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL,USER, PASSWORD);
+            PreparedStatement ps = connection.prepareStatement("select * from employee");
+            ResultSet rs = ps.executeQuery();
+            boolean found = false;
+            while (rs.next()) {
+                Employee e = new Employee();
+                e.setName(rs.getString("name"));
+                e.setPhoneNumber(rs.getString("phone_number"));
+                e.setEmail(rs.getString("email"));
+                employeeList.add(e);
+                found = true;
+            }
+            rs.close();
+            if (found) {
+                return employeeList;
+            } else {
+                System.out.println("Employee list not found. Using default list.");
+                return defaultEmployeeList();
+            }
+        } catch (Exception e) {
+            System.out.println("Error In getEmployee() -->" + e.getMessage());
+            return (null);
+        }
+    }
+    
     /**
      * Fills the emplyee list with two dummy objects
      */
@@ -49,6 +81,10 @@ public class EmployeeService implements Serializable{
         return employeeList;
     }
     
+    /*
+    Add an employee to the data base 
+    returns true if operation succeeds 
+    */
     public boolean addEmployee(Employee employee){
         boolean success = true;
         Connection conn = null;
@@ -102,42 +138,15 @@ public class EmployeeService implements Serializable{
             }catch(SQLException se){
                 se.printStackTrace();
             }
-            return success;
             //end finally try
         }//end try
+        return success;
     }
     
+ 
     /*
-    source : http://www.javaknowledge.info/display-datatable-from-mysql-db-in-primefaces/
+    Adds a table of employees to the database if it doesn't exist
     */
-    public ArrayList<Employee> getEmployeeList(){
-        try {
-            Connection connection = DriverManager.getConnection(DB_URL,USER, PASSWORD);
-            PreparedStatement ps = connection.prepareStatement("select * from employee");
-            ArrayList<Employee> employeeList = new ArrayList<>();
-            ResultSet rs = ps.executeQuery();
-            boolean found = false;
-            while (rs.next()) {
-                Employee e = new Employee();
-                e.setName(rs.getString("name"));
-                e.setPhoneNumber(rs.getString("phone_number"));
-                e.setEmail(rs.getString("email"));
-                employeeList.add(e);
-                found = true;
-            }
-            rs.close();
-            if (found) {
-                return employeeList;
-            } else {
-                System.out.println("Employee list not found. Using default list.");
-                return defaultEmployeeList();
-            }
-        } catch (Exception e) {
-            System.out.println("Error In getEmployee() -->" + e.getMessage());
-            return (null);
-        }
-    }
-    
     private void createTable(Connection conn) throws SQLException {
         String sqlCreate = "CREATE TABLE IF NOT EXISTS " + this.tableName
                 + "  (id            INTEGER,"

@@ -13,22 +13,22 @@
         </ui:define>
         <ui:define name="content">
             <h2> This week's menu</h2>
-            <c:forEach items="#{menu.menuList}" var="entry">
-                <h:outputText value="#{entry.key}" />
-                <p:dataTable value="#{entry.value}" var="dayMenu">
+            <c:forEach items="#{mealService.menuList}" var="menu">
+                <h:outputText value="#{menu.day}" />
+                <p:dataTable value="#{menu.meals}" var="m">
                     <p:column > 
-                        <h:outputText value="#{dayMenu.name} " />
-                        <h:outputText value=" (#{dayMenu.description})" />
+                        <h:outputText value="#{m.name} " />
+                        <h:outputText value=" (#{m.description})" />
                     </p:column>
                    
                     <p:column> 
-                        <h:outputText value="#{dayMenu.price}" >
+                        <h:outputText value="#{m.price}" >
                             <f:convertNumber type="currency" currencySymbol="€"/>
                         </h:outputText> <br/>
                     </p:column>
                     
                     <p:column> 
-                        <h:outputText rendered = "#{dayMenu.vegetarian}" value="vegetarian"/>
+                        <h:outputText rendered = "#{m.vegetarian}" value="vegetarian"/>
                     </p:column>
                 </p:dataTable>
             </c:forEach>

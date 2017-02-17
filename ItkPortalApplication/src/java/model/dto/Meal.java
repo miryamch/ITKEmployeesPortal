@@ -20,6 +20,7 @@ import javax.persistence.Transient;
 @ViewScoped
 public class Meal implements Serializable{
     @Id @GeneratedValue
+    private int id; 
     private String name ;
     private String description;
     private Double price;
@@ -42,14 +43,23 @@ public class Meal implements Serializable{
         this.vegetarian = DEFAULT_VEGETARIAN;
     }
     
-    public Meal(String Name, String Description, String weekDay, 
+    public Meal(int id, String name, String description, String weekDay, 
             Double price, boolean isVegetarian) {
-        this.name = Name;
-        this.description = Description;
+        this.id = id; 
+        this.name = name;
+        this.description = description;
         this.price = price;
         this.vegetarian = isVegetarian;
     }
 
+      public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }

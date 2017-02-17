@@ -9,10 +9,9 @@ import java.io.Serializable;
 import java.util.Random;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Transient;
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
-//import java.util.Random;
 
 /**
  *
@@ -21,8 +20,7 @@ import javax.persistence.Transient;
 @ViewScoped
 @Named("employee")
 public class Employee implements Serializable {
-//    @Id
-    private final Long id;
+    @Id long id;
     private String mName;
     private String mEmail;
     private String mPhoneNumber ;
@@ -35,7 +33,7 @@ public class Employee implements Serializable {
     
     public Employee() {
         Random randomGenerator = new Random();
-        this.id = new Long(randomGenerator.nextInt(1000));
+        this.id = randomGenerator.nextInt(1000);
         this.mName = DEFAULT_NAME;
         this.mEmail = DEFAULT_EMAIL;
         this.mPhoneNumber = DEFAULT_PHONE;
@@ -50,7 +48,7 @@ public class Employee implements Serializable {
      */
     public Employee(String name, String email, String phoneNumber) {
         Random randomGenerator = new Random();
-        id = new Long(randomGenerator.nextInt(1000));
+        id = randomGenerator.nextInt(1000);
         mName = name;
         mEmail = email;
         mPhoneNumber = phoneNumber;
@@ -81,7 +79,7 @@ public class Employee implements Serializable {
         this.mPhoneNumber = phoneNumber;
     }
     
-    public Long getId() {
+    public long getId() {
         return id;
     }
     

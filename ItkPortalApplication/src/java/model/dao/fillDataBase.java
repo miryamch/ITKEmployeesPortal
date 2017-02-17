@@ -7,6 +7,8 @@ package model.dao;
 
 import java.sql.SQLException;
 import model.dto.Employee;
+import model.dto.Meal;
+import model.dto.Menu;
 
 /**
  *
@@ -17,12 +19,12 @@ public class fillDataBase {
         
         EmployeeService service  = new EmployeeService();
         
-        Employee employee = new Employee("Daniel Basserraw",
-                "daniel.basserraw@itk-engineering.com", "55500003");
+        Employee employee = new Employee("Daniel Wasserbar",
+                "daniel.wasserbar@itk-engineering.com", "55500003");
         service.addEmployee(employee);
         
-        employee = new Employee("Alexander Lrahp",
-                "alex.lrahp@itk-engineering.com", "55500004");
+        employee = new Employee("Alexander Pahrl",
+                "alex.pahrl@itk-engineering.com", "55500004");
         service.addEmployee(employee);
         
         employee = new Employee("Michael Tengler",
@@ -32,6 +34,21 @@ public class fillDataBase {
         employee = new Employee("Miryam Bouchaani",
                 "miryam.bouchaani@itk-engineering.com", "55500006");
         service.addEmployee(employee);
+        
+        //********************************************************************
+        MealService ms = new MealService(); 
+        Meal meal1 = new Meal();
+        meal1.setId(100);
+        meal1.setName("Pizza");
+        meal1.setDescription("Ham and mushrooms ");
+        meal1.setVegetarian(false);
+        Meal meal2 = new Meal(); // default meal
+        meal2.setId(101);
+        meal2.setDescription("Basil and garlic");
+
+        Menu menu = new Menu("Monday", meal1, meal2); 
+        ms.addMenu(menu);
+        
     }
- 
+    
 }
