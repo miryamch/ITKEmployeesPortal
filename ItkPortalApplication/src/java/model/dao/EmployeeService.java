@@ -10,7 +10,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import model.dto.Employee;
@@ -22,7 +26,15 @@ import model.dto.Employee;
 @Named(value = "employeeService")
 @ViewScoped
 public class EmployeeService implements Serializable{
+    // JDBC driver name and database URL
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/itkportaldb";
     
+    //  Database credentials
+    static final String USER = "root";
+    static final String PASSWORD = "nbuser";
+    
+    private static final String tableName = "employee";
     /**
      * Fills the emplyee list with two dummy objects
      */
@@ -38,9 +50,61 @@ public class EmployeeService implements Serializable{
     }
     
     public boolean addEmployee(Employee employee){
-//        boolean success=  employeeList.add(employee);
-//        return success;
-        return false  ; 
+        boolean success = true;
+        Connection conn = null;
+        Statement stmt = null;
+     
+        try{
+
+            //STEP 2: Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            //STEP 3: Open a connection
+            System.out.println("Connecting to a selected database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            System.out.println("Connected database successfully...");
+            
+            //STEP 4: Execute a query
+            System.out.println("Create table if it doesn't exist...");
+            createTable(conn);
+
+            System.out.println("Inserting records into the table...");
+            stmt = conn.createStatement();
+            
+            String sql = "INSERT INTO employee " +
+                    "VALUES ('"+ employee.getId() +"', '" + 
+                    employee.getName() + "', '" +
+                    employee.getEmail() +"', '" +
+                    employee.getPhoneNumber() +"')";
+            stmt.executeUpdate(sql);
+            
+            System.out.println("Inserted records into the table...");
+            
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            Logger.getLogger(EmployeeService.class.getName()).log(Level.SEVERE, null, se);
+            se.printStackTrace();
+            success= false;
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+            success= false;
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    conn.close();
+            }catch(SQLException se){
+            }// do nothing
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+            return success;
+            //end finally try
+        }//end try
     }
     
     /*
@@ -48,16 +112,16 @@ public class EmployeeService implements Serializable{
     */
     public ArrayList<Employee> getEmployeeList(){
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/itkportaldb","root", "nbuser");
+            Connection connection = DriverManager.getConnection(DB_URL,USER, PASSWORD);
             PreparedStatement ps = connection.prepareStatement("select * from employee");
             ArrayList<Employee> employeeList = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             boolean found = false;
             while (rs.next()) {
                 Employee e = new Employee();
-                e.setName(rs.getString("mName"));
-                e.setPhoneNumber(rs.getString("mPhoneNumber"));
-                e.setEmail(rs.getString("mEmail"));
+                e.setName(rs.getString("name"));
+                e.setPhoneNumber(rs.getString("phone_number"));
+                e.setEmail(rs.getString("email"));
                 employeeList.add(e);
                 found = true;
             }
@@ -72,6 +136,17 @@ public class EmployeeService implements Serializable{
             System.out.println("Error In getEmployee() -->" + e.getMessage());
             return (null);
         }
+    }
+    
+    private void createTable(Connection conn) throws SQLException {
+        String sqlCreate = "CREATE TABLE IF NOT EXISTS " + this.tableName
+                + "  (id            INTEGER,"
+                + "   name           VARCHAR(50),"
+                + "   email          VARCHAR(50),"
+                + "   phone_number   VARCHAR(50))";
+        
+        Statement stmt = conn.createStatement();
+        stmt.execute(sqlCreate);
     }
     
 }
