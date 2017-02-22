@@ -2,70 +2,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <ui:composition>
         <h:head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <h:outputStylesheet name="css/default.css"/>
-            <h:outputStylesheet name="css/cssLayout.css"/>
             <title><ui:insert name="title">ITK Engineering employees' portal</ui:insert></title>
         </h:head>
         
         <h:body>
-            <div id="top">
-                <h1> ITK Engineering  </h1>
-                <p> Welcome to the employees' inofficial portal!</p>
-            </div>
             
-            <div>
-                <div id="left">
-                    <div>
-                        <ui:decorate template="navigation-button.xhtml">
-                            <ui:param name="sectionName" value="News"></ui:param>
-                            <ui:param name="sectionPath" value="/view/news"></ui:param>
-                        </ui:decorate>
-                    </div>
-                    <div>
-                        <ui:decorate template="navigation-button.xhtml">
-                            <ui:param name="sectionName" value="Phone book"></ui:param>
-                            <ui:param name="sectionPath" value="/view/phoneBook"></ui:param>
-                        </ui:decorate>
-                    </div>
-                    <div>
-                        <ui:decorate template="navigation-button.xhtml">
-                            <ui:param name="sectionName" value="Canteen Menu"></ui:param>
-                            <ui:param name="sectionPath" value="/view/canteenMenu"></ui:param>
-                        </ui:decorate>
-                    </div>
-                    <div>
-                        <ui:decorate template="navigation-button.xhtml">
-                            <ui:param name="sectionName" value="Classified ads"></ui:param>
-                            <ui:param name="sectionPath" value="/view/classifiedAds"></ui:param>
-                        </ui:decorate>
-                    </div>
-                </div>
-                <div id="content" class="left_content">
+            <p:layout fullPage="true"> 
+                
+                <p:layoutUnit position="north" size="150" resizable="true" closable="true" collapsible="true">
+                    <h1> ITK Engineering  </h1>
+                    <p> Welcome to the employees' inofficial portal!</p>                
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="west" size="275" header="Sections" collapsible="true">
+                    <p:menu >
+                        <p:menuitem value="News" outcome="/faces/view/news"/>
+                        <p:menuitem value="Phone book" outcome="/faces/view/phoneBook" />
+                        <p:menuitem value="Canteen Menu" outcome="/faces/view/canteenMenu"/>
+                        <p:menuitem value="Classified ads" outcome="/faces/view/classifiedAds"/>
+                    </p:menu>
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="center" id="content">
                     <ui:insert name="content">Content</ui:insert>
-                </div>
-            </div>
-            
-            <div id="bottom">
-                <ui:insert name="bottom">
-                    <p> 
-                        ITK Engineering AG  Im Speyerer Tal 6  76761 Rülzheim<br/>
-                        Tel.: +49 7272 7703-0   Fax: +49 7272 7703-100<br/>
-                    </p>
-                    
-                    <p>
-                        <h:outputLink value="http://www.itk-engineering.de"> http://www.itk-engineering.de</h:outputLink><br/>
-                    </p>
-                    <p>
-                        <h:outputLink value="mailto:info@itk-engineering.de">
-                            <h:outputText value="info@itk-engineering.de" />
-                        </h:outputLink>
-                    </p>
-                </ui:insert>
-            </div>
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="south" size="200" closable="true" collapsible="true" id="bottom">
+                    <ui:insert name="bottom">
+                        <p> 
+                            ITK Engineering AG  Im Speyerer Tal 6  76761 Rülzheim<br/>
+                            Tel.: +49 7272 7703-0   Fax: +49 7272 7703-100<br/>
+                        </p>
+                        
+                        <p>
+                            <h:outputLink value="http://www.itk-engineering.de"> http://www.itk-engineering.de</h:outputLink><br/>
+                        </p>
+                        <p>
+                            <h:outputLink value="mailto:info@itk-engineering.de">
+                                <h:outputText value="info@itk-engineering.de" />
+                            </h:outputLink>
+                        </p>
+                    </ui:insert>
+                </p:layoutUnit>
+                
+            </p:layout>
         </h:body>
     </ui:composition>
 </html>
