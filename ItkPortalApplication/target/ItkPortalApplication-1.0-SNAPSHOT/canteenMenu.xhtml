@@ -18,7 +18,7 @@
                 <p:dataTable value="#{menu.meals}" var="m">
                     <p:column > 
                         <h:outputText value="#{m.name} " />
-                        <h:outputText value=" (#{m.description})" />
+                        <h:outputText value=" (#{m.description})" rendered="#{not empty m.description}" />
                     </p:column>
                    
                     <p:column> 
