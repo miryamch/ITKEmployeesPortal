@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>fillDataBase.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ItkPortalApplication</a> &gt; <a href="index.html" class="el_package">com.itk.chaabouni.dao</a> &gt; <span class="el_source">fillDataBase.java</span></div><h1>fillDataBase.java</h1><pre class="source lang-java linenums">/*
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
+package com.itk.chaabouni.dao;
+
+import com.itk.chaabouni.dto.Meal;
+import com.itk.chaabouni.dto.Menu;
+
+/**
+ *
+ * @author mchaabouni
+ */
+<span class="nc" id="L15">public class fillDataBase {</span>
+    public static void main(String[] args){
+        
+//        EmployeeService service  = new EmployeeService();
+//        
+//        Employee employee = new Employee(&quot;Daniel Wasserbar&quot;,
+//                &quot;daniel.wasserbar@itk-engineering.com&quot;, &quot;55500003&quot;);
+//        service.addEmployee(employee);
+//        
+//        employee = new Employee(&quot;Alexander Pahrl&quot;,
+//                &quot;alex.pahrl@itk-engineering.com&quot;, &quot;55500004&quot;);
+//        service.addEmployee(employee);
+//        
+//        employee = new Employee(&quot;Michael Tengler&quot;,
+//                &quot;michael.tengler@itk-engineering.com&quot;, &quot;55500005&quot;);
+//        service.addEmployee(employee);
+//        
+//        employee = new Employee(&quot;Miryam Bouchaani&quot;,
+//                &quot;miryam.bouchaani@itk-engineering.com&quot;, &quot;55500006&quot;);
+//        service.addEmployee(employee);
+//        
+        //********************************************************************
+<span class="nc" id="L37">        MealService ms = new MealService(); </span>
+<span class="nc" id="L38">        Meal meal1 = new Meal();</span>
+<span class="nc" id="L39">        Meal meal2 = new Meal(); // default meal</span>
+
+        // Monday menu 
+<span class="nc" id="L42">        meal1.setId(100);</span>
+        
+<span class="nc" id="L44">        meal2.setId(101);</span>
+<span class="nc" id="L45">        meal2.setName(&quot;Pizza&quot;);</span>
+<span class="nc" id="L46">        meal2.setDescription(&quot;with ham and mushrooms&quot;);</span>
+<span class="nc" id="L47">        meal2.setVegetarian(false);</span>
+        
+<span class="nc" id="L49">        ms.addMenu(new Menu(&quot;Monday&quot;, meal1, meal2));</span>
+        
+        // Tuesday menu 
+<span class="nc" id="L52">        meal1.setId(102);</span>
+<span class="nc" id="L53">        meal1.setName(&quot;Salmon &quot;);</span>
+<span class="nc" id="L54">        meal1.setDescription(&quot;with side vegetables&quot;);</span>
+<span class="nc" id="L55">        meal1.setVegetarian(false);</span>
+<span class="nc" id="L56">        meal1.setPrice(10.0);</span>
+        
+<span class="nc" id="L58">        meal2.setId(103);</span>
+<span class="nc" id="L59">        meal2.setName(&quot;Lentils soup &quot;);</span>
+<span class="nc" id="L60">        meal2.setDescription(&quot; with carrots and cottage cheese&quot;);</span>
+<span class="nc" id="L61">        meal2.setVegetarian(true);</span>
+        
+<span class="nc" id="L63">        ms.addMenu(new Menu(&quot;Tuesday&quot;, meal1, meal2));</span>
+        
+        // Wednesday's menu 
+<span class="nc" id="L66">        meal1.setId(104);</span>
+<span class="nc" id="L67">        meal1.setName(&quot;Cheese burger &quot;);</span>
+<span class="nc" id="L68">        meal1.setDescription(&quot;with fried potatoes&quot;);</span>
+<span class="nc" id="L69">        meal1.setVegetarian(false);</span>
+<span class="nc" id="L70">        meal1.setPrice(8.0);</span>
+        
+<span class="nc" id="L72">        meal2.setId(105);</span>
+<span class="nc" id="L73">        meal2.setName(&quot;Spinach Lasagna&quot;);</span>
+<span class="nc" id="L74">        meal2.setDescription(&quot;with cream sauce and Grana Padano&quot;);</span>
+<span class="nc" id="L75">        meal2.setVegetarian(true);</span>
+        
+<span class="nc" id="L77">        ms.addMenu(new Menu(&quot;Wednesday&quot;, meal1, meal2));</span>
+<span class="nc" id="L78">    }</span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.5.201112152213</span></div></body></html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Employee.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ItkPortalApplication</a> &gt; <a href="index.html" class="el_package">com.itk.chaabouni.dto</a> &gt; <span class="el_source">Employee.java</span></div><h1>Employee.java</h1><pre class="source lang-java linenums">/*
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
+package com.itk.chaabouni.dto;
+
+import java.io.Serializable;
+import java.util.Random;
+import javax.inject.Named;
+import javax.faces.view.ViewScoped;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+/**
+ *
+ * @author mchaabouni
+ */
+@ViewScoped
+@Named(&quot;employee&quot;)
+public class Employee implements Serializable {
+    @Id long id;
+    private String mName;
+    private String mEmail;
+    private String mPhoneNumber ;
+<span class="pc" id="L26">    @Transient</span>
+    private final String DEFAULT_NAME = &quot;John Doe&quot;;
+<span class="pc" id="L28">    @Transient</span>
+    private final String DEFAULT_EMAIL = &quot;john.doe@itk-engineering.com&quot;;
+<span class="pc" id="L30">    @Transient</span>
+    private final String DEFAULT_PHONE = &quot;5550001&quot;;
+    
+<span class="nc" id="L33">    public Employee() {</span>
+<span class="nc" id="L34">        Random randomGenerator = new Random();</span>
+<span class="nc" id="L35">        this.id = randomGenerator.nextInt(1000);</span>
+<span class="nc" id="L36">        this.mName = DEFAULT_NAME;</span>
+<span class="nc" id="L37">        this.mEmail = DEFAULT_EMAIL;</span>
+<span class="nc" id="L38">        this.mPhoneNumber = DEFAULT_PHONE;</span>
+<span class="nc" id="L39">    }</span>
+    
+    
+    /**
+     * Creates a new instance of Employee
+     * @param name full name of the employee
+     * @param email company E-mail adress of the employee
+     * @param phoneNumber direct line in the company or mobile
+     */
+<span class="fc" id="L48">    public Employee(String name, String email, String phoneNumber) {</span>
+<span class="fc" id="L49">        Random randomGenerator = new Random();</span>
+<span class="fc" id="L50">        id = randomGenerator.nextInt(1000);</span>
+<span class="fc" id="L51">        mName = name;</span>
+<span class="fc" id="L52">        mEmail = email;</span>
+<span class="fc" id="L53">        mPhoneNumber = phoneNumber;</span>
+<span class="fc" id="L54">    }</span>
+    
+    
+    public String getName() {
+<span class="fc" id="L58">        return mName;</span>
+    }
+    
+    public void setName(String name) {
+<span class="fc" id="L62">        this.mName = name;</span>
+<span class="fc" id="L63">    }</span>
+    
+    public String getEmail() {
+<span class="fc" id="L66">        return mEmail;</span>
+    }
+    
+    public void setEmail(String email) {
+<span class="fc" id="L70">        this.mEmail = email;</span>
+<span class="fc" id="L71">    }</span>
+    
+    public String getPhoneNumber() {
+<span class="fc" id="L74">        return mPhoneNumber;</span>
+    }
+    
+    public void setPhoneNumber(String phoneNumber) {
+<span class="fc" id="L78">        this.mPhoneNumber = phoneNumber;</span>
+<span class="fc" id="L79">    }</span>
+    
+    public long getId() {
+<span class="nc" id="L82">        return id;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.5.201112152213</span></div></body></html>
