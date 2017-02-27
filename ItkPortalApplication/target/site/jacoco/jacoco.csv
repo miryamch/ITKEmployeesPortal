@@ -1,7 +1,9 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 ItkPortalApplication,com.itk.chaabouni.dao,fillDataBase,114,0,0,0,31,0,2,0,2,0
+ItkPortalApplication,com.itk.chaabouni.dao,AdService,29,0,0,0,8,0,3,0,3,0
 ItkPortalApplication,com.itk.chaabouni.dao,MealService,526,0,26,0,121,0,19,0,6,0
 ItkPortalApplication,com.itk.chaabouni.dao,EmployeeService,272,0,20,0,69,0,15,0,5,0
 ItkPortalApplication,com.itk.chaabouni.dto,Meal,0,89,0,0,0,32,0,12,0,12
 ItkPortalApplication,com.itk.chaabouni.dto,Menu,0,65,0,0,0,23,0,9,0,9
+ItkPortalApplication,com.itk.chaabouni.dto,ClassifiedAd,46,0,0,0,20,0,10,0,10,0
 ItkPortalApplication,com.itk.chaabouni.dto,Employee,34,52,0,0,8,19,2,7,2,7
