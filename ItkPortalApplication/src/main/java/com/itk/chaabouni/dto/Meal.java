@@ -6,8 +6,8 @@
 package com.itk.chaabouni.dto;
 
 import java.io.Serializable;
-import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
@@ -16,7 +16,7 @@ import javax.persistence.Transient;
  *
  * @author mchaabouni
  */
-@Named(value = "meal")
+@Entity(name = "meal")
 @ViewScoped
 public class Meal implements Serializable{
     @Id @GeneratedValue

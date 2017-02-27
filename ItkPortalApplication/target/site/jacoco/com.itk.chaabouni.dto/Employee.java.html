@@ -7,8 +7,8 @@ package com.itk.chaabouni.dto;
 
 import java.io.Serializable;
 import java.util.Random;
-import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
@@ -17,17 +17,17 @@ import javax.persistence.Transient;
  * @author mchaabouni
  */
 @ViewScoped
-@Named(&quot;employee&quot;)
+@Entity(name=&quot;employee&quot;)
 public class Employee implements Serializable {
     @Id long id;
     private String mName;
     private String mEmail;
     private String mPhoneNumber ;
-<span class="pc" id="L26">    @Transient</span>
+<span class="nc" id="L26">    @Transient</span>
     private final String DEFAULT_NAME = &quot;John Doe&quot;;
-<span class="pc" id="L28">    @Transient</span>
+<span class="nc" id="L28">    @Transient</span>
     private final String DEFAULT_EMAIL = &quot;john.doe@itk-engineering.com&quot;;
-<span class="pc" id="L30">    @Transient</span>
+<span class="nc" id="L30">    @Transient</span>
     private final String DEFAULT_PHONE = &quot;5550001&quot;;
     
 <span class="nc" id="L33">    public Employee() {</span>
@@ -45,38 +45,38 @@ public class Employee implements Serializable {
      * @param email company E-mail adress of the employee
      * @param phoneNumber direct line in the company or mobile
      */
-<span class="fc" id="L48">    public Employee(String name, String email, String phoneNumber) {</span>
-<span class="fc" id="L49">        Random randomGenerator = new Random();</span>
-<span class="fc" id="L50">        id = randomGenerator.nextInt(1000);</span>
-<span class="fc" id="L51">        mName = name;</span>
-<span class="fc" id="L52">        mEmail = email;</span>
-<span class="fc" id="L53">        mPhoneNumber = phoneNumber;</span>
-<span class="fc" id="L54">    }</span>
+<span class="nc" id="L48">    public Employee(String name, String email, String phoneNumber) {</span>
+<span class="nc" id="L49">        Random randomGenerator = new Random();</span>
+<span class="nc" id="L50">        id = randomGenerator.nextInt(1000);</span>
+<span class="nc" id="L51">        mName = name;</span>
+<span class="nc" id="L52">        mEmail = email;</span>
+<span class="nc" id="L53">        mPhoneNumber = phoneNumber;</span>
+<span class="nc" id="L54">    }</span>
     
     
     public String getName() {
-<span class="fc" id="L58">        return mName;</span>
+<span class="nc" id="L58">        return mName;</span>
     }
     
     public void setName(String name) {
-<span class="fc" id="L62">        this.mName = name;</span>
-<span class="fc" id="L63">    }</span>
+<span class="nc" id="L62">        this.mName = name;</span>
+<span class="nc" id="L63">    }</span>
     
     public String getEmail() {
-<span class="fc" id="L66">        return mEmail;</span>
+<span class="nc" id="L66">        return mEmail;</span>
     }
     
     public void setEmail(String email) {
-<span class="fc" id="L70">        this.mEmail = email;</span>
-<span class="fc" id="L71">    }</span>
+<span class="nc" id="L70">        this.mEmail = email;</span>
+<span class="nc" id="L71">    }</span>
     
     public String getPhoneNumber() {
-<span class="fc" id="L74">        return mPhoneNumber;</span>
+<span class="nc" id="L74">        return mPhoneNumber;</span>
     }
     
     public void setPhoneNumber(String phoneNumber) {
-<span class="fc" id="L78">        this.mPhoneNumber = phoneNumber;</span>
-<span class="fc" id="L79">    }</span>
+<span class="nc" id="L78">        this.mPhoneNumber = phoneNumber;</span>
+<span class="nc" id="L79">    }</span>
     
     public long getId() {
 <span class="nc" id="L82">        return id;</span>

@@ -5,14 +5,10 @@
 */
 package com.itk.chaabouni.dao;
 
-import static com.itk.chaabouni.dao.EmployeeService.DB_URL;
-import static com.itk.chaabouni.dao.EmployeeService.PASSWORD;
-import static com.itk.chaabouni.dao.EmployeeService.USER;
 import com.itk.chaabouni.dto.Meal;
 import com.itk.chaabouni.dto.Menu;
 import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,7 +57,7 @@ public class MealService implements Serializable{
     public ArrayList<Menu> getMenuList() {
         ArrayList<Menu> menuList = new ArrayList<>();
         try {
-            Connection connection = DriverManager.getConnection(DB_URL,USER, PASSWORD);
+            Connection connection = ConnectionService.getConnetion();
             PreparedStatement ps = connection.prepareStatement("select * from weekmenu");
             ResultSet rsmenu = ps.executeQuery();
             
@@ -164,7 +160,7 @@ public class MealService implements Serializable{
             
             //STEP 3: Open a connection
             System.out.println("Connecting to a selected database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            conn = ConnectionService.getConnetion();
             System.out.println("Connected database successfully...");
             
             //STEP 4: Execute a query

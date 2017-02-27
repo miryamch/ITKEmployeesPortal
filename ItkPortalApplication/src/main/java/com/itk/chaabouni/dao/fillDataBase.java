@@ -5,6 +5,7 @@
 */
 package com.itk.chaabouni.dao;
 
+import com.itk.chaabouni.dto.Employee;
 import com.itk.chaabouni.dto.Meal;
 import com.itk.chaabouni.dto.Menu;
 
@@ -15,23 +16,23 @@ import com.itk.chaabouni.dto.Menu;
 public class fillDataBase {
     public static void main(String[] args){
         
-//        EmployeeService service  = new EmployeeService();
-//        
-//        Employee employee = new Employee("Daniel Wasserbar",
-//                "daniel.wasserbar@itk-engineering.com", "55500003");
-//        service.addEmployee(employee);
-//        
-//        employee = new Employee("Alexander Pahrl",
-//                "alex.pahrl@itk-engineering.com", "55500004");
-//        service.addEmployee(employee);
-//        
-//        employee = new Employee("Michael Tengler",
-//                "michael.tengler@itk-engineering.com", "55500005");
-//        service.addEmployee(employee);
-//        
-//        employee = new Employee("Miryam Bouchaani",
-//                "miryam.bouchaani@itk-engineering.com", "55500006");
-//        service.addEmployee(employee);
+        EmployeeService service  = new EmployeeService();
+        
+        Employee employee = new Employee("Daniel Wasserbar",
+                "daniel.wasserbar@itk-engineering.com", "55500003");
+        service.addEmployee(employee);
+        
+        employee = new Employee("Alexander Pahrl",
+                "alex.pahrl@itk-engineering.com", "55500004");
+        service.addEmployee(employee);
+        
+        employee = new Employee("Michael Tengler",
+                "michael.tengler@itk-engineering.com", "55500005");
+        service.addEmployee(employee);
+        
+        employee = new Employee("Miryam Bouchaani",
+                "miryam.bouchaani@itk-engineering.com", "55500006");
+        service.addEmployee(employee);
 //        
         //********************************************************************
         MealService ms = new MealService(); 

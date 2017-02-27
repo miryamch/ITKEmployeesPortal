@@ -7,8 +7,11 @@ package com.itk.chaabouni.dto;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.inject.Named;
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.SessionScoped;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -16,11 +19,14 @@ import javax.validation.constraints.Size;
  *
  * @author mchaabouni
  */
-@Named(value = "classifiedAd")
-@ViewScoped
+@Entity(name = "classifiedAd")
+@SessionScoped
 public class ClassifiedAd implements Serializable {
+    @Id @GeneratedValue
+    private int id; 
     @NotNull
     String creator; //should be Employee
+    @Temporal(javax.persistence.TemporalType.DATE)
     Date creationDate; 
     @NotNull @Size(min=0, max=50)
     String title;
@@ -40,6 +46,10 @@ public class ClassifiedAd implements Serializable {
         this.description = description;
     }
     
+    public int getId() {
+        return id;
+    }
+      
     public String getCreator() {
         return creator;
     }

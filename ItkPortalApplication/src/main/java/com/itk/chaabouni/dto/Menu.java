@@ -8,13 +8,13 @@ package com.itk.chaabouni.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+import javax.persistence.Entity;
 
 /**
  *
  * @author mchaabouni
  */
-@Named(value = "menu")
+@Entity(name = "menu")
 @ViewScoped
 public class Menu implements Serializable {
     private String day ;

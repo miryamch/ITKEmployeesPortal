@@ -7,8 +7,8 @@ package com.itk.chaabouni.dto;
 
 import java.io.Serializable;
 import java.util.Random;
-import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
@@ -17,7 +17,7 @@ import javax.persistence.Transient;
  * @author mchaabouni
  */
 @ViewScoped
-@Named("employee")
+@Entity(name="employee")
 public class Employee implements Serializable {
     @Id long id;
     private String mName;

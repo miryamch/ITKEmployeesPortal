@@ -7,7 +7,6 @@ package com.itk.chaabouni.dao;
 
 import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,14 +25,7 @@ import com.itk.chaabouni.dto.Employee;
 @Named(value = "employeeService")
 @ViewScoped
 public class EmployeeService implements Serializable{
-    // JDBC driver name and database URL
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/itkportaldb";
-    
-    //  Database credentials
-    static final String USER = "root";
-    static final String PASSWORD = "nbuser";
-    
+ 
     private static final String tableName = "employee";
     /* Retrive list of employees from database
     If fail to connect to the database return a default list of employees
@@ -42,7 +34,7 @@ public class EmployeeService implements Serializable{
     public ArrayList<Employee> getEmployeeList(){
         ArrayList<Employee> employeeList = new ArrayList<>();
         try {
-            Connection connection = DriverManager.getConnection(DB_URL,USER, PASSWORD);
+            Connection connection = ConnectionService.getConnetion();
             PreparedStatement ps = connection.prepareStatement("select * from employee");
             ResultSet rs = ps.executeQuery();
             boolean found = false;
@@ -97,7 +89,7 @@ public class EmployeeService implements Serializable{
             
             //STEP 3: Open a connection
             System.out.println("Connecting to a selected database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            conn = ConnectionService.getConnetion();
             System.out.println("Connected database successfully...");
             
             //STEP 4: Execute a query
