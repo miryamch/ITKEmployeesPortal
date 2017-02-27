@@ -22,7 +22,7 @@
                 
                 <p:column headerText="Creation Date">
                     <h:outputText value="#{ad.creationDate}">
-                        <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                        <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
                     </h:outputText>
                 </p:column>
             </p:dataTable>
