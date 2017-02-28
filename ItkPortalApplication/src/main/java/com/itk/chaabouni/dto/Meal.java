@@ -7,20 +7,15 @@ package com.itk.chaabouni.dto;
 
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
 import javax.persistence.Transient;
 
 /**
  *
  * @author mchaabouni
  */
-@Entity(name = "meal")
-@ViewScoped
+@Embeddable
 public class Meal implements Serializable{
-    @Id @GeneratedValue
-    private int id; 
     private String name ;
     private String description;
     private Double price;
@@ -32,7 +27,6 @@ public class Meal implements Serializable{
     @Transient
     private final boolean DEFAULT_VEGETARIAN = true;
     
-    
     /**
      * Creates a new instance of Meal
      */
@@ -43,21 +37,12 @@ public class Meal implements Serializable{
         this.vegetarian = DEFAULT_VEGETARIAN;
     }
     
-    public Meal(int id, String name, String description, String weekDay, 
+    public Meal(String name, String description, String weekDay,
             Double price, boolean isVegetarian) {
-        this.id = id; 
         this.name = name;
         this.description = description;
         this.price = price;
         this.vegetarian = isVegetarian;
-    }
-
-      public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
     
     public String getName() {

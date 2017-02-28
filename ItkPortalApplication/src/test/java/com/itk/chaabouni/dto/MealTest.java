@@ -28,33 +28,7 @@ public class MealTest {
     
     public MealTest() {
     }
-  
-    /**
-     * Test of getId method, of class Meal.
-     */
-    @Test
-    public void testGetId() {
-        System.out.println("getId");
-        int expResult = DEFAULT_ID;
-        Meal mealInstance = new Meal(expResult, DEFAULT_NAME,
-                DEFAULT_DESCRIPTION, DEFAULT_WEEKDAY, DEFAULT_PRICE , 
-                DEFAULT_VEGETARIAN);
-        int result = mealInstance.getId();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of setId method, of class Meal.
-     */
-    @Test
-    public void testSetId() {
-        System.out.println("setId");
-        int id = DEFAULT_ID;
-        Meal instance = new Meal();
-        instance.setId(id);
-        assertEquals(id, instance.getId());
-    }
-
+ 
     /**
      * Test of getName method, of class Meal.
      */
@@ -62,7 +36,7 @@ public class MealTest {
     public void testGetName() {
         System.out.println("getName");
         String expResult = DEFAULT_NAME;
-        Meal instance = new Meal(DEFAULT_ID, expResult,
+        Meal instance = new Meal(expResult,
                 DEFAULT_DESCRIPTION, DEFAULT_WEEKDAY, DEFAULT_PRICE , 
                 DEFAULT_VEGETARIAN);
         String result = instance.getName();
@@ -88,7 +62,7 @@ public class MealTest {
     public void testGetDescription() {
         System.out.println("getDescription");
         String expResult = DEFAULT_DESCRIPTION;        
-        Meal instance = new Meal(DEFAULT_ID, DEFAULT_NAME,
+        Meal instance = new Meal(DEFAULT_NAME,
                 expResult, DEFAULT_WEEKDAY, DEFAULT_PRICE , 
                 DEFAULT_VEGETARIAN);
         String result = instance.getDescription();
@@ -114,7 +88,7 @@ public class MealTest {
     public void testGetPrice() {
         System.out.println("getPrice");
         Double expResult = null;
-        Meal instance = new Meal(DEFAULT_ID, DEFAULT_NAME,
+        Meal instance = new Meal(DEFAULT_NAME,
                 DEFAULT_DESCRIPTION, DEFAULT_WEEKDAY, expResult , 
                 DEFAULT_VEGETARIAN);
         Double result = instance.getPrice();
@@ -140,7 +114,7 @@ public class MealTest {
     public void testIsVegetarian() {
         System.out.println("isVegetarian");
         boolean expResult = false;
-        Meal instance = new Meal(DEFAULT_ID, DEFAULT_NAME,
+        Meal instance = new Meal(DEFAULT_NAME,
                 DEFAULT_DESCRIPTION, DEFAULT_WEEKDAY, DEFAULT_PRICE , 
                 expResult);
         boolean result = instance.isVegetarian();

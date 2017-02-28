@@ -50,7 +50,7 @@ public class MenuTest {
         System.out.println("getDay");
         String expResult = DEFAULT_DAY;
         Menu instance = new Menu(expResult, DEFAULT_MEAL1, DEFAULT_MEAL2);
-        String result = instance.getDay();
+        String result = instance.getWeekDay();
         assertEquals(expResult, result);
     }
 
@@ -62,8 +62,8 @@ public class MenuTest {
         System.out.println("setDay");
         String day = DEFAULT_DAY;
         Menu instance = new Menu();
-        instance.setDay(day);
-        assertEquals(instance.getDay(), day);
+        instance.setWeekDay(day);
+        assertEquals(instance.getWeekDay(), day);
     }
 
     /**
