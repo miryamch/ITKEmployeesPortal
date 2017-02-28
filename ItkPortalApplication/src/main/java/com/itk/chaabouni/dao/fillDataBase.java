@@ -9,6 +9,11 @@ import com.itk.chaabouni.dto.ClassifiedAd;
 import com.itk.chaabouni.dto.Employee;
 import com.itk.chaabouni.dto.Meal;
 import com.itk.chaabouni.dto.Menu;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 /**
  *
@@ -16,71 +21,59 @@ import com.itk.chaabouni.dto.Menu;
  */
 public class fillDataBase {
     public static void main(String[] args){
+        Configuration configuration = new Configuration();
+        configuration.configure();
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
+                configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        Session session = sessionFactory.openSession();
         
-        EmployeeService service  = new EmployeeService();
-        
-        Employee employee = new Employee("Daniel Wasserbar",
+        session.beginTransaction();
+        //********************************************************************        
+        Employee employee1 = new Employee("Daniel Wasserbar",
                 "daniel.wasserbar@itk-engineering.com", "55500003");
-        service.addEmployee(employee);
+        session.save(employee1);
         
-        employee = new Employee("Alexander Pahrl",
+        Employee employee2 = new Employee("Alexander Pahrl",
                 "alex.pahrl@itk-engineering.com", "55500004");
-        service.addEmployee(employee);
+        session.save(employee2);
         
-        employee = new Employee("Michael Tengler",
+        Employee employee3 = new Employee("Michael Tengler",
                 "michael.tengler@itk-engineering.com", "55500005");
-        service.addEmployee(employee);
+        session.save(employee3);
         
-        employee = new Employee("Miryam Bouchaani",
+        Employee employee4 = new Employee("Miryam Bouchaani",
                 "miryam.bouchaani@itk-engineering.com", "55500006");
-        service.addEmployee(employee);
+        session.save(employee4);
+        
+        session.getTransaction().commit();
+        //********************************************************************
+        
+        session.beginTransaction();
+      
+        // Monday menu
+        Meal meal1 = new Meal("Pizza", "with ham and mushrooms", 5., false);
+        Meal meal2 = new Meal("Pesto Pasta", "with basil and garlic", 5., true);
+        Menu mondayMenu = new Menu("Monday", meal1, meal2);
+        session.save(mondayMenu);
+        
+        // Tuesday menu
+        meal1 = new Meal("Salmon", "with side vegetables", 10., false);
+        meal2 = new Meal("Lentils soup ", "with carrots and cottage cheese", 5., true);
+        Menu tuesdayMenu = new Menu("Tuesday", meal1, meal2);
+        session.save(tuesdayMenu);
+        
+        // Wednesday's menu
+        meal1 = new Meal("Cheese burger ", "with fried potatoes", 8., false);
+        meal2 = new Meal("Spinach Lasagna", "with cream sauce and Grana Padano", 5., true);
+        Menu wednesdayMenu = new Menu("Wednesday", meal1, meal2);
+        session.save(wednesdayMenu);
+      
+        session.getTransaction().commit();
         
         //********************************************************************
-        MealService ms = new MealService(); 
-        Meal meal1 = new Meal();
-        Meal meal2 = new Meal(); // default meal
-
-//        // Monday menu 
-//        meal1.setId(100);
-//        
-//        meal2.setId(101);
-//        meal2.setName("Pizza");
-//        meal2.setDescription("with ham and mushrooms");
-//        meal2.setVegetarian(false);
-//        
-//        ms.addMenu(new Menu("Monday", meal1, meal2));
-//        
-//        // Tuesday menu 
-//        meal1.setId(102);
-//        meal1.setName("Salmon ");
-//        meal1.setDescription("with side vegetables");
-//        meal1.setVegetarian(false);
-//        meal1.setPrice(10.0);
-//        
-//        meal2.setId(103);
-//        meal2.setName("Lentils soup ");
-//        meal2.setDescription(" with carrots and cottage cheese");
-//        meal2.setVegetarian(true);
-//        
-//        ms.addMenu(new Menu("Tuesday", meal1, meal2));
-//        
-//        // Wednesday's menu 
-//        meal1.setId(104);
-//        meal1.setName("Cheese burger ");
-//        meal1.setDescription("with fried potatoes");
-//        meal1.setVegetarian(false);
-//        meal1.setPrice(8.0);
-//        
-//        meal2.setId(105);
-//        meal2.setName("Spinach Lasagna");
-//        meal2.setDescription("with cream sauce and Grana Padano");
-//        meal2.setVegetarian(true);
-//        
-//        ms.addMenu(new Menu("Wednesday", meal1, meal2));
-//        
-        //********************************************************************
-
         
+        session.close();
     }
     
 }

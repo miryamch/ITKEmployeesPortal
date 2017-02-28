@@ -6,7 +6,6 @@
 package com.itk.chaabouni.dto;
 
 import java.io.Serializable;
-import javax.faces.view.ViewScoped;
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
 
@@ -37,8 +36,7 @@ public class Meal implements Serializable{
         this.vegetarian = DEFAULT_VEGETARIAN;
     }
     
-    public Meal(String name, String description, String weekDay,
-            Double price, boolean isVegetarian) {
+    public Meal(String name, String description, Double price, boolean isVegetarian) {
         this.name = name;
         this.description = description;
         this.price = price;
