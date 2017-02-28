@@ -14,46 +14,27 @@
         <ui:define name="content">
             <h2> This week's menu</h2>
             <p:dataTable value="#{mealService.menuList}" var="menu">
-                <p:column headerText="#{menu.weekDay}">
-                    <p:row>
-                        <h:outputText value="#{menu.meal1.name}"/>
-                        <h:outputText value=" (#{menu.meal1.description})" rendered="#{not empty menu.meal1.description}" />
-                        <h:outputText value="#{menu.meal1.price}" >
-                            <f:convertNumber type="currency" currencySymbol="€"/>
-                        </h:outputText> <br/>                    
-                        <h:outputText rendered = "#{menu.meal1.vegetarian}" value="vegetarian"/>
-                    </p:row>
-                    <p:row>
-                        <h:outputText value="#{menu.meal2.name}"/>
-                        <h:outputText value=" (#{menu.meal2.description})" rendered="#{not empty menu.meal2.description}" />
-                        <h:outputText value="#{menu.meal2.price}" >
-                            <f:convertNumber type="currency" currencySymbol="€"/>
-                        </h:outputText> <br/>                    
-                        <h:outputText rendered = "#{menu.meal2.vegetarian}" value="vegetarian"/>
-                    </p:row>
+                <p:column>
+                    <h:outputText value="#{menu.weekDay}"/>                    
+                </p:column>
+                <p:column >
+                    <h:outputText value="#{menu.meal1.name}"/>
+                    <h:outputText value=" (#{menu.meal1.description})" rendered="#{not empty menu.meal1.description}" />  <br/>
+                    <h:outputText value="#{menu.meal1.price}" >
+                        <f:convertNumber type="currency" currencySymbol="€"/>
+                    </h:outputText> <br/>      
+                    <h:outputText rendered = "#{menu.meal1.vegetarian}" value="vegetarian"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{menu.meal2.name}"/>
+                    <h:outputText value=" (#{menu.meal2.description})" rendered="#{not empty menu.meal2.description}" />  <br/>
+                    <h:outputText value="#{menu.meal2.price}" >
+                        <f:convertNumber type="currency" currencySymbol="€"/>
+                    </h:outputText>     <br/>             
+                    <h:outputText rendered = "#{menu.meal2.vegetarian}" value="vegetarian"/>
                 </p:column>
                 
             </p:dataTable>
-<!--            <c:forEach items="#{mealService.menuList}" var="menu">
-                <h:outputText value="#{menu.weekDay}" />
-                <p:dataTable value="#{menu.meals}" var="m">
-                    <p:column > 
-                        <h:outputText value="#{m.name} " />
-                        <h:outputText value=" (#{m.description})" rendered="#{not empty m.description}" />
-                    </p:column>
-                   
-                    <p:column> 
-                        <h:outputText value="#{m.price}" >
-                            <f:convertNumber type="currency" currencySymbol="€"/>
-                        </h:outputText> <br/>
-                    </p:column>
-                    
-                    <p:column> 
-                        <h:outputText rendered = "#{m.vegetarian}" value="vegetarian"/>
-                    </p:column>
-                </p:dataTable>
-            </c:forEach>-->
-            
         </ui:define>
         
     </ui:composition>
