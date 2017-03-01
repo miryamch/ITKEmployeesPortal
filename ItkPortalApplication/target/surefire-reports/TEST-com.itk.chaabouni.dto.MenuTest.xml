@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.itk.chaabouni.dto.MenuTest" time="0.105" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.itk.chaabouni.dto.MenuTest" time="0.141" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_111\jre\bin"/>
@@ -60,11 +60,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testGetMeal1" classname="com.itk.chaabouni.dto.MenuTest" time="0.006"/>
+  <testcase name="testGetMeal1" classname="com.itk.chaabouni.dto.MenuTest" time="0"/>
   <testcase name="testGetMeal2" classname="com.itk.chaabouni.dto.MenuTest" time="0"/>
   <testcase name="testGetMeals" classname="com.itk.chaabouni.dto.MenuTest" time="0"/>
   <testcase name="testGetDay" classname="com.itk.chaabouni.dto.MenuTest" time="0"/>
-  <testcase name="testSetDay" classname="com.itk.chaabouni.dto.MenuTest" time="0.001"/>
+  <testcase name="testSetDay" classname="com.itk.chaabouni.dto.MenuTest" time="0"/>
   <testcase name="testSetMeal1" classname="com.itk.chaabouni.dto.MenuTest" time="0"/>
   <testcase name="testSetMeal2" classname="com.itk.chaabouni.dto.MenuTest" time="0"/>
 </testsuite>

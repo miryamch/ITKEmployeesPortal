@@ -29,6 +29,12 @@ public class EmployeeService implements Serializable{
         session.beginTransaction();
         List<Employee> employeeList = session.createCriteria(Employee.class).list();
         session.close();
+        
+        if (employeeList.isEmpty()){
+            employeeList = defaultEmployeeList(); 
+            System.err.println("Warning: could not retrieve employee list "
+                    + "from data base.Using a default list.");
+        }
         return employeeList;
     }
     
@@ -50,7 +56,6 @@ public class EmployeeService implements Serializable{
     /**
      * Fills the emplyee list with two simple objects
      */
-    @Deprecated
     private ArrayList<Employee> defaultEmployeeList(){
         ArrayList<Employee> employeeList = new ArrayList<>();
         Employee employee1 = new Employee("John Doe",

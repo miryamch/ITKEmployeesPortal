@@ -28,6 +28,11 @@ public class MealService implements Serializable{
         session.beginTransaction();
         List<Menu> menuList = session.createCriteria(Menu.class).list();
         session.close();
+         if (menuList.isEmpty()){
+            menuList = defaultMenuList(); 
+            System.err.println("Warning: could not retrieve menu list "
+                    + "from data base.Using a default list.");
+        }
         return menuList;
     }
     
@@ -45,8 +50,7 @@ public class MealService implements Serializable{
         session.getTransaction().commit();
         session.close();
     }
-    
-    @Deprecated
+   
     private ArrayList<Menu> defaultMenuList() {
         ArrayList<Menu> menuList = new ArrayList<>();
         String[] weekDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
