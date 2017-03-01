@@ -6,15 +6,9 @@
 package com.itk.chaabouni.dao;
 
 import com.itk.chaabouni.dto.ClassifiedAd;
-import com.itk.chaabouni.dto.Employee;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,10 +26,8 @@ import org.hibernate.Session;
 @SessionScoped
 public class AdService implements Serializable {
  
-    private static final String TABLE_NAME = "ads";
     /* Retrive list of employees from database
     If fail to connect to the database return a default list of employees
-    source : http://www.javaknowledge.info/display-datatable-from-mysql-db-in-primefaces/
     */
     
     public List<ClassifiedAd> getListOfAds() {
