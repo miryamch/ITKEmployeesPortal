@@ -32,8 +32,9 @@ public class EmployeeService implements Serializable{
         
         if (employeeList.isEmpty()){
             employeeList = defaultEmployeeList(); 
-            System.err.println("Warning: could not retrieve employee list "
-                    + "from data base.Using a default list.");
+             System.out.println("Error In getEmployeeList() -->" + 
+                     "Table 'itkportaldb.employee' doesn't exist" +
+                    " Returning default table");
         }
         return employeeList;
     }

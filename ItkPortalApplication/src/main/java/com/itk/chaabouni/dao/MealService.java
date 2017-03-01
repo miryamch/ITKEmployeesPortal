@@ -30,8 +30,9 @@ public class MealService implements Serializable{
         session.close();
          if (menuList.isEmpty()){
             menuList = defaultMenuList(); 
-            System.err.println("Warning: could not retrieve menu list "
-                    + "from data base.Using a default list.");
+             System.out.println("Error In getEmployeeList() -->" + 
+                     "Table 'itkportaldb.weekmenu' doesn't exist" +
+                    " Returning default table");
         }
         return menuList;
     }

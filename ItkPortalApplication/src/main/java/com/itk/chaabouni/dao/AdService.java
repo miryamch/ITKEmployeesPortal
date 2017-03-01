@@ -6,6 +6,7 @@
 package com.itk.chaabouni.dao;
 
 import com.itk.chaabouni.dto.ClassifiedAd;
+import com.itk.chaabouni.dto.Employee;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -21,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.hibernate.Session;
 
 /**
  *
@@ -37,113 +39,31 @@ public class AdService implements Serializable {
     */
     
     public List<ClassifiedAd> getListOfAds() {
-        ArrayList<ClassifiedAd> outList = new ArrayList<>();
+          Session session = SessionService.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<ClassifiedAd> adList = session.createCriteria(ClassifiedAd.class).list();
+        session.close();
         
-        try {
-            Connection connection = ConnectionService.getConnetion();
-            PreparedStatement ps = connection.prepareStatement("select * from ads");
-            ResultSet rs = ps.executeQuery();
-            boolean found = false;
-            while (rs.next()) {
-                ClassifiedAd  ad = new ClassifiedAd();
-                ad.setCreator(rs.getString("creator"));
-                ad.setTitle(rs.getString("title"));
-                ad.setDescription(rs.getString("description"));
-                ad.setCreationDate(rs.getDate("creationdate"));
-                outList.add(ad);
-                found = true;
-            }
-            rs.close();
-            if (found) {
-                return outList;
-            } else {
-                System.out.println("List of ads not found. Returning default table");
-                return defaultTable();
-            }
-        } catch (Exception e) {
-            System.out.println("Error In getListOfAds() -->" + e.getMessage()+ 
+        if (adList.isEmpty()){
+            adList = defaultAdsTable(); 
+             System.out.println("Error In getEmployeeList() -->" + 
+                     "Table 'itkportaldb.employee' doesn't exist" +
                     " Returning default table");
-            return defaultTable();
-//        }
-//
         }
+        return adList;
     }
     
-    public boolean addAd(ClassifiedAd newAd){
-        boolean success = true;
-        Connection conn = null;
-        Statement stmt = null;
-     
-        try{
-
-            //STEP 2: Register JDBC driver
-            Class.forName("com.mysql.jdbc.Driver");
-            
-            //STEP 3: Open a connection
-            System.out.println("Connecting to a selected database...");
-            conn = ConnectionService.getConnetion();
-            System.out.println("Connected database successfully...");
-            
-            //STEP 4: Execute a query
-            System.out.println("Create table if it doesn't exist...");
-            createTable(conn);
-
-            System.out.println("Inserting records into the table...");
-            stmt = conn.createStatement();
-            
-            String sql = "INSERT INTO ads " +
-                    "VALUES ('"+ newAd.getId() +"', '" + 
-                    newAd.getCreator()+ "', '" +
-                    newAd.getTitle()+"', '" +
-                    newAd.getDescription()+"', '" +
-                    newAd.getCreationDate()+"')";
-            stmt.executeUpdate(sql);
-            
-            System.out.println("Inserted records into the table...");
-            
-        }catch(SQLException se){
-            //Handle errors for JDBC
-            Logger.getLogger(AdService.class.getName()).log(Level.SEVERE, null, se);
-            se.printStackTrace();
-            success= false;
-        }catch(Exception e){
-            //Handle errors for Class.forName
-            e.printStackTrace();
-            success= false;
-        }finally{
-            //finally block used to close resources
-            try{
-                if(stmt!=null)
-                    conn.close();
-            }catch(SQLException se){
-            }// do nothing
-            try{
-                if(conn!=null)
-                    conn.close();
-            }catch(SQLException se){
-                se.printStackTrace();
-            }
-            //end finally try
-        }//end try
-        return success;
-    }
-    
-     /*
-    Adds a table of employees to the database if it doesn't exist
-    */
-    private void createTable(Connection conn) throws SQLException {
-        String sqlCreate = "CREATE TABLE IF NOT EXISTS " + this.TABLE_NAME
-                + "  (id            INTEGER,"
-                + "   creator       VARCHAR(50),"
-                + "   title         VARCHAR(50),"
-                + "   description   VARCHAR(255),"
-                + "   creationdate  TIMESTAMP)";
+    public void addAd(ClassifiedAd newAd){
+       Session session = SessionService.getSessionFactory().openSession();
         
-        Statement stmt = conn.createStatement();
-        stmt.execute(sqlCreate);
+        session.beginTransaction();
+        session.save(newAd);
+        
+        session.getTransaction().commit();
+        session.close();
     }
 
-    private List<ClassifiedAd> defaultTable() {
+    private List<ClassifiedAd> defaultAdsTable() {
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
